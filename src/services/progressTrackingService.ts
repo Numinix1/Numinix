@@ -1,7 +1,7 @@
 import { supabase } from '../lib/supabase';
 
 const GROQ_PROXY_URL = 'http://localhost:3001/api/groq-chat';
-const MODEL_NAME = 'openai/gpt-oss-20b';
+const MODEL_NAME = 'llama3-8b-8192';
 
 export interface QuestionAttempt {
   id?: string;
