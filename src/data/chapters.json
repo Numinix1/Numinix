@@ -1,0 +1,152 @@
+[
+  {
+    "id": "class9_ch1",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Number Systems",
+    "topics": ["Real Numbers", "Irrational Numbers", "Rational Numbers", "Laws of Exponents"],
+    "unlock_cost": 0,
+    "order": 1,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch2",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Polynomials",
+    "topics": ["Polynomials in One Variable", "Zeroes of a Polynomial", "Factorization of Polynomials", "Algebraic Identities"],
+    "unlock_cost": 150,
+    "order": 2,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch3",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Coordinate Geometry",
+    "topics": ["Cartesian System", "Plotting Points in the Plane"],
+    "unlock_cost": 350,
+    "order": 3,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch4",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Linear Equations in Two Variables",
+    "topics": ["Solution of a Linear Equation", "Graph of a Linear Equation", "Equations of Lines Parallel to Axes"],
+    "unlock_cost": 600,
+    "order": 4,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch5",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Introduction to Euclid’s Geometry",
+    "topics": ["Euclid’s Definitions", "Axioms and Postulates", "Equivalent Versions of Euclid’s Fifth Postulate"],
+    "unlock_cost": 900,
+    "order": 5,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch6",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Lines and Angles",
+    "topics": ["Basic Terms and Definitions", "Intersecting Lines and Non-intersecting Lines", "Angles Made by a Transversal", "Angle Sum Property of a Triangle"],
+    "unlock_cost": 1250,
+    "order": 6,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch7",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Triangles",
+    "topics": ["Congruence of Triangles", "Criteria for Congruence", "Properties of Triangles", "Inequalities in a Triangle"],
+    "unlock_cost": 1650,
+    "order": 7,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch8",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Quadrilaterals",
+    "topics": ["Angle Sum Property", "Types of Quadrilaterals", "Properties of a Parallelogram", "Mid-point Theorem"],
+    "unlock_cost": 2100,
+    "order": 8,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch9",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Areas of Parallelograms and Triangles",
+    "topics": ["Figures on the Same Base and Between Same Parallels", "Parallelograms on the Same Base", "Triangles on the Same Base"],
+    "unlock_cost": 2600,
+    "order": 9,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch10",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Circles",
+    "topics": ["Tangent to a Circle", "Angle Subtended by Chord", "Equal Chords and their Properties", "Cyclic Quadrilaterals"],
+    "unlock_cost": 3150,
+    "order": 10,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch11",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Constructions",
+    "topics": ["Basic Constructions", "Construction of Bisectors", "Construction of Triangles"],
+    "unlock_cost": 3750,
+    "order": 11,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch12",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Heron’s Formula",
+    "topics": ["Area of Triangle", "Applications of Heron’s Formula"],
+    "unlock_cost": 4400,
+    "order": 12,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch13",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Surface Areas and Volumes",
+    "topics": ["Surface Area of Sphere, Cylinder, Cone", "Volume of Solid Figures", "Combination of Solids"],
+    "unlock_cost": 5100,
+    "order": 13,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch14",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Statistics",
+    "topics": ["Collection of Data", "Presentation of Data", "Graphical Representation", "Mean, Median and Mode"],
+    "unlock_cost": 5850,
+    "order": 14,
+    "required_stars": 5
+  },
+  {
+    "id": "class9_ch15",
+    "class_level": 9,
+    "subject": "Mathematics",
+    "chapter": "Probability",
+    "topics": ["Random Experiments", "Outcomes and Events", "Simple Problems on Probability"],
+    "unlock_cost": 6650,
+    "order": 15,
+    "required_stars": 5
+  }
+]

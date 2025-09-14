@@ -1,0 +1,62 @@
+[
+  {
+    "from": "meters",
+    "to": "centimeters", 
+    "factor": 100,
+    "category": "Length"
+  },
+  {
+    "from": "kilometers",
+    "to": "meters",
+    "factor": 1000,
+    "category": "Length"
+  },
+  {
+    "from": "feet",
+    "to": "inches",
+    "factor": 12,
+    "category": "Length"
+  },
+  {
+    "from": "kilograms",
+    "to": "grams",
+    "factor": 1000,
+    "category": "Weight"
+  },
+  {
+    "from": "pounds",
+    "to": "ounces", 
+    "factor": 16,
+    "category": "Weight"
+  },
+  {
+    "from": "liters",
+    "to": "milliliters",
+    "factor": 1000,
+    "category": "Volume"
+  },
+  {
+    "from": "gallons",
+    "to": "liters",
+    "factor": 3.78541,
+    "category": "Volume"
+  },
+  {
+    "from": "hours",
+    "to": "minutes",
+    "factor": 60,
+    "category": "Time"
+  },
+  {
+    "from": "minutes",
+    "to": "seconds",
+    "factor": 60,
+    "category": "Time"
+  },
+  {
+    "from": "celsius",
+    "to": "fahrenheit",
+    "factor": 1.8,
+    "category": "Temperature"
+  }
+]

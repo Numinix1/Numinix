@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Math Explorer",
+    "image": "🧮",
+    "cost": 0,
+    "unlocked": true
+  },
+  {
+    "id": 2,
+    "name": "Number Ninja",
+    "image": "🥷",
+    "cost": 0,
+    "unlocked": true
+  },
+  {
+    "id": 3,
+    "name": "Geometry Guru",
+    "image": "📐",
+    "cost": 0,
+    "unlocked": true
+  },
+  {
+    "id": 4,
+    "name": "Algebra Ace",
+    "image": "🎯",
+    "cost": 0,
+    "unlocked": true
+  },
+  {
+    "id": 5,
+    "name": "Calculator King",
+    "image": "👑",
+    "cost": 0,
+    "unlocked": true
+  },
+  {
+    "id": 6,
+    "name": "Rocket Scientist",
+    "image": "🚀",
+    "cost": 200,
+    "unlocked": false
+  },
+  {
+    "id": 7,
+    "name": "Brain Master",
+    "image": "🧠",
+    "cost": 400,
+    "unlocked": false
+  },
+  {
+    "id": 8,
+    "name": "Math Wizard",
+    "image": "🧙‍♂️",
+    "cost": 600,
+    "unlocked": false
+  },
+  {
+    "id": 9,
+    "name": "Golden Scholar",
+    "image": "🏆",
+    "cost": 800,
+    "unlocked": false
+  },
+  {
+    "id": 10,
+    "name": "Diamond Mind",
+    "image": "💎",
+    "cost": 1000,
+    "unlocked": false
+  },
+  {
+    "id": 11,
+    "name": "Space Explorer",
+    "image": "🌟",
+    "cost": 1200,
+    "unlocked": false
+  },
+  {
+    "id": 12,
+    "name": "Lightning Fast",
+    "image": "⚡",
+    "cost": 1500,
+    "unlocked": false
+  }
+]
