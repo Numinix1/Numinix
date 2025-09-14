@@ -41,23 +41,12 @@ export function AuthModal({ isOpen, onClose, defaultMode = 'signin' }: AuthModal
         if (error) throw error;
         setResetSent(true);
       } else if (mode === 'signup') {
-        const { data, error } = await supabase.auth.signUp({
-          email: formData.email,
-          password: formData.password,
+        await signUp(formData.email, formData.password, {
+          name: formData.name,
+          class_level: formData.class_level,
+          phone: formData.phone
         });
-        if (error) throw error;
-        if (data.user && !data.session) {
-          // Email confirmation required
-          setSignupSuccess(true);
-        } else if (data.session) {
-          // User is authenticated, proceed with profile creation
-          await signUp(formData.email, formData.password, {
-            name: formData.name,
-            class_level: formData.class_level,
-            phone: formData.phone
-          });
-          onClose();
-        }
+        setSignupSuccess(true);
       } else {
         await signIn(formData.email, formData.password);
         onClose();

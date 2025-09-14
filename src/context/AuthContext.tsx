@@ -63,32 +63,66 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error && error.code === 'PGRST116') {
         // User profile missing, create it with default values
-        const { data: userData } = await supabase.auth.getUser();
-        if (userData?.user) {
-          // Get first chapter for default class level
-          const firstChapter = chaptersData.find(c => 
-            c.class_level === 1 && c.order === 1
-          );
-          
-          const { error: insertError } = await supabase
-            .from('user_profiles')
-            .insert({
-              id: userData.user.id,
-              email: userData.user.email || '',
-              name: userData.user.user_metadata?.name || '',
-              class_level: 1,
-              total_coins: 100, // Starting coins
-              total_correct: 0,
-              total_wrong: 0,
-              avatar_id: 1,
-              unlocked_chapters: firstChapter ? [firstChapter.id] : ['class9_ch1'],
-              diagnostic_completed: false,
-            });
-          if (insertError) throw insertError;
-          // Try fetching again
-          return await fetchUserProfile(userId);
+        console.log('User profile not found, creating default profile for user:', userId);
+        try {
+          const { data: userData } = await supabase.auth.getUser();
+          if (userData?.user) {
+            // Get first chapter for default class level
+            const firstChapter = chaptersData.find(c => 
+              c.class_level === 1 && c.order === 1
+            );
+            
+            const { error: insertError } = await supabase
+              .from('user_profiles')
+              .insert({
+                id: userData.user.id,
+                email: userData.user.email || '',
+                name: userData.user.user_metadata?.name || 'Student',
+                class_level: userData.user.user_metadata?.class_level || 1,
+                total_coins: 100,
+                total_correct: 0,
+                total_wrong: 0,
+                avatar_id: 1,
+                unlocked_chapters: firstChapter ? [firstChapter.id] : ['class9_ch1'],
+                diagnostic_completed: false,
+                phone: userData.user.phone || null,
+                full_name: userData.user.user_metadata?.name || 'Student',
+                avatar_url: null,
+                money: 100,
+                total_correct_answers: 0
+              });
+            
+            if (insertError) {
+              console.error('Error creating user profile:', insertError);
+              // Set a basic profile in state even if database insert fails
+              setUserProfile({
+                id: userData.user.id,
+                email: userData.user.email || '',
+                name: userData.user.user_metadata?.name || 'Student',
+                class_level: userData.user.user_metadata?.class_level || 1,
+                total_coins: 100,
+                total_correct: 0,
+                total_wrong: 0,
+                avatar_id: 1,
+                unlocked_chapters: firstChapter ? [firstChapter.id] : ['class9_ch1'],
+                diagnostic_completed: false,
+                phone: userData.user.phone || null,
+                full_name: userData.user.user_metadata?.name || 'Student',
+                avatar_url: null,
+                money: 100,
+                total_correct_answers: 0
+              } as User);
+              return;
+            }
+            
+            // Try fetching again after successful insert
+            return await fetchUserProfile(userId);
+          }
+        } catch (createError) {
+          console.error('Error in profile creation process:', createError);
         }
       } else if (error) {
+        console.error('Error fetching user profile:', error);
         throw error;
       } else {
         // Ensure data consistency - fix any missing fields
@@ -115,48 +149,67 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, userData: Partial<User>) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name: userData.name,
-          class_level: userData.class_level
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name: userData.name,
+            class_level: userData.class_level
+          }
+        }
+      });
+
+      if (error) {
+        // Handle specific signup errors
+        if (error.message.includes('User already registered') || 
+            error.message.includes('already registered') ||
+            error.message.includes('user_already_exists')) {
+          throw new Error('This email is already registered. Please sign in or use a different email.');
+        }
+        throw error;
+      }
+
+      if (data.user) {
+        // Only create profile if user was successfully created and we have a session
+        if (data.session) {
+          // Get first chapter for the user's class
+          const firstChapter = chaptersData.find(c => 
+            c.class_level === userData.class_level && c.order === 1
+          );
+
+          const { error: userError } = await supabase
+            .from('user_profiles')
+            .insert({
+              id: data.user.id,
+              email,
+              name: userData.name || '',
+              class_level: userData.class_level || 1,
+              total_coins: 100,
+              total_correct: 0,
+              total_wrong: 0,
+              avatar_id: 1,
+              unlocked_chapters: firstChapter ? [firstChapter.id] : [],
+              diagnostic_completed: false,
+              phone: userData.phone || null,
+              full_name: userData.name || '',
+              avatar_url: null,
+              money: 100
+            });
+
+          if (userError) {
+            console.error('Error creating user profile:', userError);
+            // Don't throw here as the user account was created successfully
+          } else {
+            // Fetch the created profile to ensure state is updated
+            await fetchUserProfile(data.user.id);
+          }
         }
       }
-    });
-
-    if (error) throw error;
-
-    if (data.user) {
-      // Get first chapter for the user's class
-      const firstChapter = chaptersData.find(c => 
-        c.class_level === userData.class_level && c.order === 1
-      );
-
-      const { error: userError } = await supabase
-        .from('user_profiles')
-        .insert({
-          id: data.user.id,
-          email,
-          name: userData.name || '',
-          class_level: userData.class_level || 1,
-          total_coins: 0,
-          total_correct: 0,
-          total_wrong: 0,
-          avatar_id: 1,
-          unlocked_chapters: firstChapter ? [firstChapter.id] : [],
-          diagnostic_completed: false,
-          phone: userData.phone || null,
-          full_name: userData.name || '',
-          avatar_url: null,
-          money: 100
-        });
-
-      if (userError) throw userError;
-      
-      // Fetch the created profile to ensure state is updated
-      await fetchUserProfile(data.user.id);
+    } catch (error: any) {
+      console.error('Signup error:', error);
+      throw error;
     }
   };
 
